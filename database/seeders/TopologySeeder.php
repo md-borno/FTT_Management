@@ -54,10 +54,10 @@ class TopologySeeder extends Seeder
                 'is_active' => true,
             ]);
             
-            $this->command->info("  ✅ Node created: {$device->name} at ({$position['x']}, {$position['y']})");
+            $this->command->info("Node created: {$device->name} at ({$position['x']}, {$position['y']})");
         }
 
-        $this->command->info('✅ ' . Node::count() . ' nodes created');
+        $this->command->info(Node::count() . ' nodes created');
 
         // Create links based on parent-child relationships
         $this->command->info('Creating links between nodes...');
@@ -81,7 +81,7 @@ class TopologySeeder extends Seeder
                         ],
                     ]);
                     
-                    $this->command->info("  ✅ Link created: {$sourceNode->name} → {$targetNode->name}");
+                    $this->command->info(" Link created: {$sourceNode->name} → {$targetNode->name}");
                 }
             }
         }
@@ -107,12 +107,12 @@ class TopologySeeder extends Seeder
                         ]);
                     }
                 }
-                $this->command->info('✅ Star topology created with ' . Link::count() . ' links');
+                $this->command->info('Star topology created with ' . Link::count() . ' links');
             }
         }
 
         $this->command->info('=========================================');
-        $this->command->info('✅ Topology seeding completed!');
+        $this->command->info('Topology seeding completed!');
         $this->command->info('   - ' . Node::count() . ' nodes created');
         $this->command->info('   - ' . Link::count() . ' links created');
         $this->command->info('=========================================');

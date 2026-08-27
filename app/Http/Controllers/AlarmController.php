@@ -1,5 +1,4 @@
 <?php
-// app/Http/Controllers/AlarmController.php
 
 namespace App\Http\Controllers;
 

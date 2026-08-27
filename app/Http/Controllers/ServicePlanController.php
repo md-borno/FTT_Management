@@ -1,6 +1,4 @@
 <?php
-// app/Http/Controllers/ServicePlanController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\ServicePlan;

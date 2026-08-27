@@ -1,6 +1,4 @@
 <?php
-// app/Http/Controllers/DeviceController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\Device;

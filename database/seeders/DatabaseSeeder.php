@@ -1,5 +1,4 @@
 <?php
-// database/seeders/DatabaseSeeder.php
 
 namespace Database\Seeders;
 
@@ -138,10 +137,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TopologySeeder::class);
 
         $this->command->info('=========================================');
-        $this->command->info('✅ Database seeding completed successfully!');
+        $this->command->info(' Database seeding completed successfully!');
         $this->command->info('=========================================');
         $this->command->info('');
-        $this->command->info('📋 Summary:');
+        $this->command->info(' Summary:');
         $this->command->info('  - 1 Admin User');
         $this->command->info('  - 2 Device Types (OLT, ONT)');
         $this->command->info('  - 1 Location');
@@ -151,7 +150,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('  - ' . Node::count() . ' Topology Nodes');
         $this->command->info('  - ' . Link::count() . ' Topology Links');
         $this->command->info('');
-        $this->command->info('🔑 Login Credentials:');
+        $this->command->info(' Login Credentials:');
         $this->command->info('  Email: admin@fttx.com');
         $this->command->info('  Password: password123');
         $this->command->info('=========================================');

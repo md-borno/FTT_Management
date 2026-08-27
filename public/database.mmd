@@ -1,0 +1,176 @@
+erDiagram
+    USERS ||--o{ ALARMS : "acknowledges/resolves"
+    USERS ||--o{ TICKETS : "assigned_to / created_by"
+    USERS ||--o{ TICKET_COMMENTS : writes
+
+    LOCATIONS ||--o{ DEVICES : hosts
+    LOCATIONS ||--o{ NODES : hosts
+
+    DEVICE_TYPES ||--o{ DEVICES : classifies
+
+    DEVICES ||--o{ NODES : maps_to
+    DEVICES ||--o{ ALARMS : raises
+    DEVICES ||--o{ TICKETS : "related to"
+    DEVICES }o--o{ SUBSCRIBERS : "SUBSCRIBER_DEVICE"
+
+    SERVICE_PLANS ||--o{ SUBSCRIBERS : subscribes_to
+
+    SUBSCRIBERS ||--o{ TICKETS : files
+    SUBSCRIBERS }o--o{ DEVICES : "SUBSCRIBER_DEVICE"
+
+
+    TICKETS ||--o{ TICKET_COMMENTS : has
+
+    USERS {
+        bigint id PK
+        string name
+        string email UK
+        timestamp email_verified_at
+        string password
+        string remember_token
+        timestamps timestamps
+    }
+
+    LOCATIONS {
+        bigint id PK
+        string name
+        string code UK
+        string address
+        string city
+        string state
+        string country
+        string postal_code
+        decimal latitude
+        decimal longitude
+        bigint parent_location_id FK
+        boolean is_active
+        timestamps timestamps
+    }
+
+    DEVICE_TYPES {
+        bigint id PK
+        string name UK
+        string slug UK
+        text description
+        json capabilities
+        json specifications
+        boolean is_active
+        timestamps timestamps
+    }
+
+    SERVICE_PLANS {
+        bigint id PK
+        string name
+        string slug UK
+        text description
+        string bandwidth
+        decimal price
+        string billing_cycle
+        json features
+        json limits
+        boolean is_active
+        int sort_order
+        timestamps timestamps
+    }
+
+    DEVICES {
+        bigint id PK
+        string name
+        string serial_number UK
+        string ip_address
+        string mac_address UK
+        string firmware_version
+        string model
+        string manufacturer
+        bigint device_type_id FK
+        bigint location_id FK
+        enum status
+        json configuration
+        json capabilities
+        json metadata
+        timestamp last_seen_at
+        timestamp installed_at
+        timestamp warranty_expiry
+        boolean is_monitored
+        timestamps timestamps
+    }
+
+    SUBSCRIBERS {
+        bigint id PK
+        string name
+        string email UK
+        string phone
+        text address
+        string customer_id UK
+        bigint service_plan_id FK
+        enum status
+        json preferences
+        json billing_info
+        timestamp activated_at
+        timestamp suspended_at
+        timestamp cancelled_at
+        int data_usage
+        boolean is_priority
+        timestamps timestamps
+    }
+
+    ALARMS {
+        bigint id PK
+        string name
+        enum severity
+        string source
+        bigint device_id FK
+        text description
+        text resolution
+        json parameters
+        json metadata
+        timestamp occurred_at
+        timestamp acknowledged_at
+        timestamp resolved_at
+        bigint acknowledged_by FK
+        bigint resolved_by FK
+        boolean is_auto_resolved
+        timestamps timestamps
+    }
+
+    NODES {
+        bigint id PK
+        string name
+        string type
+        bigint device_id FK
+        bigint location_id FK
+        float x_position
+        float y_position
+        json properties
+        boolean is_active
+        timestamps timestamps
+    }
+
+    TICKETS {
+        bigint id PK
+        string ticket_number UK
+        string title
+        text description
+        enum priority
+        enum status
+        enum category
+        bigint subscriber_id FK
+        bigint device_id FK
+        bigint assigned_to FK
+        bigint created_by FK
+        json metadata
+        timestamp resolved_at
+        timestamp closed_at
+        int resolution_time
+        timestamps timestamps
+    }
+
+    TICKET_COMMENTS {
+        bigint id PK
+        bigint ticket_id FK
+        bigint user_id FK
+        text comment
+        json attachments
+        boolean is_internal
+        timestamps timestamps
+    }

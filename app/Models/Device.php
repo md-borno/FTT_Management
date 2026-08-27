@@ -139,7 +139,7 @@ class Device extends Model
     return $this->hasOne(Node::class);
 }
 
-// If you want to get all nodes connected to this device's node
+// all nodes connected to this device's node
 public function connectedNodes()
 {
     $node = $this->node;

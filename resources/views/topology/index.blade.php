@@ -1,4 +1,3 @@
-<!-- resources/views/topology/index.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Network Topology')

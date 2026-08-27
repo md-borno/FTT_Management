@@ -1,5 +1,4 @@
 <?php
-// app/Models/TicketComment.php
 
 namespace App\Models;
 

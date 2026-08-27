@@ -1,4 +1,3 @@
-<!-- resources/views/alarms/index.blade.php -->
 @extends('layouts.app')
 
 @section('content')

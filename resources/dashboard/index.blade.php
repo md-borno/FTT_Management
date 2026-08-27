@@ -1,4 +1,3 @@
-{{-- resources/views/dashboard/index.blade.php --}}
 @extends('layouts.app')
 
 @section('title', 'Dashboard - FTTX Manager')

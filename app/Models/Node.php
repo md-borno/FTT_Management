@@ -1,5 +1,4 @@
 <?php
-// app/Models/Node.php
 
 namespace App\Models;
 

@@ -1,5 +1,4 @@
 <?php
-// app/Models/ServicePlan.php
 
 namespace App\Models;
 

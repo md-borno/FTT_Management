@@ -1,5 +1,4 @@
 <?php
-// app/Models/Link.php
 
 namespace App\Models;
 
