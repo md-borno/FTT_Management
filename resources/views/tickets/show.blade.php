@@ -18,23 +18,18 @@
 
 <div class="row">
     <div class="col-md-8">
-        <!-- Ticket Details -->
         <div class="card mb-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
                         <p><strong>Priority:</strong> 
-                            <span class="badge bg-{{ $ticket->priority === 'critical' ? 'danger' : 
-                                                     ($ticket->priority === 'high' ? 'warning' : 
-                                                     ($ticket->priority === 'medium' ? 'info' : 'secondary')) }}">
+                            <span class="badge bg-{{ $ticket->priority_color }}">
                                 {{ ucfirst($ticket->priority) }}
                             </span>
                         </p>
                         <p><strong>Category:</strong> {{ ucfirst($ticket->category) }}</p>
                         <p><strong>Status:</strong> 
-                            <span class="badge bg-{{ $ticket->status === 'open' ? 'danger' : 
-                                                     ($ticket->status === 'in_progress' ? 'warning' : 
-                                                     ($ticket->status === 'resolved' ? 'success' : 'secondary')) }}">
+                            <span class="badge bg-{{ $ticket->status_color }}">
                                 {{ ucfirst(str_replace('_', ' ', $ticket->status)) }}
                             </span>
                         </p>
@@ -58,7 +53,6 @@
             </div>
         </div>
         
-        <!-- Comments -->
         <div class="card">
             <div class="card-header">
                 <h6 class="mb-0"><i class="bi bi-chat"></i> Comments</h6>
@@ -82,7 +76,6 @@
                     <p class="text-muted">No comments yet.</p>
                 @endforelse
                 
-                <!-- Add Comment -->
                 <hr>
                 <form method="POST" action="{{ route('tickets.comments.store', $ticket) }}">
                     @csrf
@@ -102,13 +95,11 @@
     </div>
     
     <div class="col-md-4">
-        <!-- Actions Card -->
         <div class="card">
             <div class="card-header">
                 <h6 class="mb-0">Actions</h6>
             </div>
             <div class="card-body">
-                <!-- Assign -->
                 <form method="POST" action="{{ route('tickets.assign', $ticket) }}" class="mb-3">
                     @csrf
                     <div class="mb-2">
@@ -127,7 +118,6 @@
                     </button>
                 </form>
                 
-                <!-- Update Status -->
                 <form method="POST" action="{{ route('tickets.status', $ticket) }}">
                     @csrf
                     <div class="mb-2">

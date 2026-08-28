@@ -1,0 +1,28 @@
+flowchart TB
+    subgraph "Frontend Layer"
+        A[Browser]
+        B[Bootstrap UI]
+        C[JavaScript/Chart.js]
+    end
+
+    subgraph "Application Layer - Laravel"
+        D[Routes/web.php]
+        E[Controllers]
+        F[Models/Eloquent]
+        G[Views/Blade]
+        H[Middleware]
+        I[Validation/Requests]
+    end
+
+    subgraph "Data Layer"
+        J[(MySQL Database)]
+    end
+
+ 
+
+    A --> B --> D
+    D --> H --> E
+    E --> F
+    E --> G
+    E --> I
+    F --> J

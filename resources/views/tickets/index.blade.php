@@ -16,37 +16,37 @@
     <div class="col-md-2">
         <div class="stat-card text-center">
             <h5 class="text-muted">Total</h5>
-            <h3>{{ $stats['total'] }}</h3>
+            <h3>{{ $stats['total'] ?? 0 }}</h3>
         </div>
     </div>
     <div class="col-md-2">
         <div class="stat-card text-center">
             <h5 class="text-danger">Open</h5>
-            <h3 class="text-danger">{{ $stats['open'] }}</h3>
+            <h3 class="text-danger">{{ $stats['open'] ?? 0 }}</h3>
         </div>
     </div>
     <div class="col-md-2">
         <div class="stat-card text-center">
             <h5 class="text-warning">In Progress</h5>
-            <h3 class="text-warning">{{ $stats['in_progress'] }}</h3>
+            <h3 class="text-warning">{{ $stats['in_progress'] ?? 0 }}</h3>
         </div>
     </div>
     <div class="col-md-2">
         <div class="stat-card text-center">
             <h5 class="text-info">Resolved</h5>
-            <h3 class="text-info">{{ $stats['resolved'] }}</h3>
+            <h3 class="text-info">{{ $stats['resolved'] ?? 0 }}</h3>
         </div>
     </div>
     <div class="col-md-2">
         <div class="stat-card text-center">
             <h5 class="text-secondary">Closed</h5>
-            <h3>{{ $stats['closed'] }}</h3>
+            <h3>{{ $stats['closed'] ?? 0 }}</h3>
         </div>
     </div>
     <div class="col-md-2">
         <div class="stat-card text-center">
             <h5 class="text-danger">Critical</h5>
-            <h3 class="text-danger">{{ $stats['critical'] }}</h3>
+            <h3 class="text-danger">{{ $stats['critical'] ?? 0 }}</h3>
         </div>
     </div>
 </div>
@@ -119,17 +119,13 @@
                             <td><strong>{{ $ticket->ticket_number }}</strong></td>
                             <td>{{ Str::limit($ticket->title, 30) }}</td>
                             <td>
-                                <span class="badge bg-{{ $ticket->priority === 'critical' ? 'danger' : 
-                                                         ($ticket->priority === 'high' ? 'warning' : 
-                                                         ($ticket->priority === 'medium' ? 'info' : 'secondary')) }}">
+                                <span class="badge bg-{{ $ticket->priority_color }}">
                                     {{ ucfirst($ticket->priority) }}
                                 </span>
                             </td>
                             <td>{{ ucfirst($ticket->category) }}</td>
                             <td>
-                                <span class="badge bg-{{ $ticket->status === 'open' ? 'danger' : 
-                                                         ($ticket->status === 'in_progress' ? 'warning' : 
-                                                         ($ticket->status === 'resolved' ? 'success' : 'secondary')) }}">
+                                <span class="badge bg-{{ $ticket->status_color }}">
                                     {{ ucfirst(str_replace('_', ' ', $ticket->status)) }}
                                 </span>
                             </td>

@@ -107,4 +107,10 @@ Route::post('/alarms', [AlarmController::class, 'store'])->name('alarms.store');
     // Service Plans - Add this inside the auth middleware group
 Route::resource('service-plans', ServicePlanController::class);
 Route::post('/service-plans/{servicePlan}/toggle-status', [ServicePlanController::class, 'toggleStatus'])->name('service-plans.toggle-status');
+
+// Ticket Routes
+Route::resource('tickets', TicketController::class);
+Route::post('/tickets/{ticket}/comments', [TicketController::class, 'addComment'])->name('tickets.comments.store');
+Route::post('/tickets/{ticket}/assign', [TicketController::class, 'assign'])->name('tickets.assign');
+Route::post('/tickets/{ticket}/status', [TicketController::class, 'updateStatus'])->name('tickets.status');
 });

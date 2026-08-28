@@ -14,11 +14,13 @@ class TicketComment extends Model
         'ticket_id',
         'user_id',
         'comment',
-        'is_internal',
+        'attachments',
+        'is_internal'
     ];
 
     protected $casts = [
-        'is_internal' => 'boolean',
+        'attachments' => 'array',
+        'is_internal' => 'boolean'
     ];
 
     public function ticket(): BelongsTo

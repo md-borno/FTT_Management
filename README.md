@@ -2,6 +2,17 @@
 
 A web-based **FTTx (Fiber-to-the-x) Network Management System** built with Laravel. It helps ISPs and network operators manage subscribers, devices, service plans, network topology, alarms, and support tickets from a single dashboard.
 
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+  <img src="public/screen_sort/dashboard.png" alt="Dashboard">
+  <img src="public/screen_sort/device.png" alt="Device">
+  <img src="public/screen_sort/subscriber.png" alt="Subscriber">
+  <img src="public/screen_sort/alaram.png" alt="Alarm">
+  <img src="public/screen_sort/ticket.png" alt="Ticket">
+  <img src="public/screen_sort/topology.png" alt="Topology">
+
+</div>
+
+
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
@@ -10,12 +21,15 @@ A web-based **FTTx (Fiber-to-the-x) Network Management System** built with Larav
 4. [System Requirements](#system-requirements)
 5. [Installation & Setup](#installation--setup)
 6. [Environment Configuration](#environment-configuration)
-7. [Database Setup](#database-setup)
-8. [Project Structure](#project-structure)
-9. [Screenshots](#screenshots)
-10. [Running the Application](#running-the-application)
-11. [Testing](#testing)
-12. [Deployment](#deployment)
+7. [System Architecture](#system-architecture)
+8. [ER_Daiagram](#er_daigram)
+9. [Database Setup](#database-setup)
+10. [Project Structure](#project-structure)
+11. [Screenshots](#screenshots)
+12. [Running the Application](#running-the-application)
+13. [Testing](#testing)
+14. [Deployment Documentation](public/docss/deployment_docs.md)
+
 
 ## Project Overview
 
@@ -125,9 +139,14 @@ SESSION_DRIVER=database
 QUEUE_CONNECTION=database
 CACHE_STORE=database
 ```
+## System Architecture
+![er_daigram](public/screen_sort/system_arch.png)
 
 - **`DB_CONNECTION`** can be switched to `pgsql` or `sqlite` if you prefer a different database driver — update the corresponding `DB_*` values (or point `DB_DATABASE` to a `.sqlite` file path).
 - Never commit your real `.env` file or production credentials to version control.
+
+## ER_Daigram
+![er_daigram](public/screen_sort/ER_DAIGRAM.png)
 
 ## Database Setup
 
@@ -284,7 +303,3 @@ General steps for deploying to a production server:
 7. **Set up a process manager** (e.g., Supervisor) if using queues (`QUEUE_CONNECTION=database` is configured by default), and schedule `php artisan schedule:run` via cron if using Laravel's task scheduler.
 
 8. **Use HTTPS** in production and ensure `SESSION_SECURE_COOKIE` and related security settings are appropriately configured.
-
----
-
-Built with [Laravel](https://laravel.com).
